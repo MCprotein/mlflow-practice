@@ -1,0 +1,15 @@
+creation_timestamp: 1762160250266
+current_stage: None
+deployment_job_state: null
+description: ''
+last_updated_timestamp: 1762160250266
+model_id: m-ac50b544be3d41b2868cddc4c474af6d
+name: apple_sales_model
+run_id: 26f9d2fd034d45b19cc1ec9c31407c77
+run_link: ''
+source: models:/m-ac50b544be3d41b2868cddc4c474af6d
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/880251829506056537/models/m-ac50b544be3d41b2868cddc4c474af6d/artifacts
+user_id: null
+version: 1
