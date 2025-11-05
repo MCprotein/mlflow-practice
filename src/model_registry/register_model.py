@@ -1,10 +1,16 @@
+import os
+
 import mlflow
 import mlflow.sklearn  # type: ignore
+from dotenv import load_dotenv
 from mlflow.models import infer_signature
 from sklearn.datasets import make_regression
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split
+
+# .env 파일 로드
+load_dotenv()
 
 
 def register_model():
@@ -39,11 +45,17 @@ def register_model():
         },
         signature=infer_signature(x_train, y_train),
     )
+    print(mlflow.get_artifact_uri())
 
 
 if __name__ == "__main__":
+    # Tracking URI를 start_run() 전에 설정!
+    mlflow.set_tracking_uri("http://localhost:8088")
+
+    # S3를 사용하는 실험 설정 (없으면 자동 생성, 서버의 --default-artifact-root 사용)
+    mlflow.set_experiment("production-models")
+
     with mlflow.start_run(
         run_name="sklearn-model-registration"
     ) as run:
-        mlflow.set_tracking_uri("http://localhost:8088")
         register_model()
